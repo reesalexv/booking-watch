@@ -80,7 +80,7 @@
       "type": "page_changed",
       "url": "https://www.rifugioelisabetta.com/",
       "region": "(Siamo aperti.*?)\\s*Prenotazioni",
-      "every_minutes": 60
+      "every_minutes": 30
     },
     {
       "name": "Hotel Bouton d'Or - night of 2027-06-30 (later)",
