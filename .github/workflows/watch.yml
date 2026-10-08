@@ -20,7 +20,7 @@ permissions:
 
 jobs:
   check:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
@@ -45,6 +45,9 @@ jobs:
         env:
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          EMAILS: ${{ secrets.EMAILS }}
+          SMS_GATEWAYS: ${{ secrets.SMS_GATEWAYS }}
+          NTFY_TOPICS: ${{ secrets.NTFY_TOPICS }}
           RECIPIENTS_JSON: ${{ secrets.RECIPIENTS_JSON }}
           FLAGS: ${{ github.event.inputs.flags }}
         run: python watch.py $FLAGS
