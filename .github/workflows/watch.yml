@@ -1,0 +1,50 @@
+name: booking-watch
+
+on:
+  schedule:
+    # Every ~10 minutes. Odd minutes on purpose: GitHub's servers are busiest on :00 and :30.
+    - cron: "7,17,27,37,47,57 * * * *"
+  workflow_dispatch:           # adds a "Run workflow" button so you can test by hand
+    inputs:
+      flags:
+        description: "Leave EMPTY for a normal run. To test, type one of:  --test   --dry-run   --heartbeat   --now"
+        required: false
+        default: ""
+
+concurrency:
+  group: booking-watch         # never run two copies at once
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install -r requirements.txt
+
+      # The watcher's "memory" (what it has already alerted about). Each run saves a fresh copy
+      # and the next run loads the newest one.
+      - name: Load memory
+        uses: actions/cache@v4
+        with:
+          path: watch_state.json
+          key: state-${{ github.run_id }}
+          restore-keys: |
+            state-
+
+      - name: Run watcher
+        env:
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          RECIPIENTS_JSON: ${{ secrets.RECIPIENTS_JSON }}
+          FLAGS: ${{ github.event.inputs.flags }}
+        run: python watch.py $FLAGS
