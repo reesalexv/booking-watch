@@ -1,0 +1,115 @@
+{
+  "timezone": "America/New_York",
+  "sms_method": "imessage",
+  "recipients": {
+    "emails": [
+      "you@example.com"
+    ],
+    "sms_gateways": [
+      "5551234567@vtext.com"
+    ],
+    "ntfy": [
+      "pick-a-long-random-topic-name"
+    ]
+  },
+  "watches": [
+    {
+      "name": "TMB - Gîte Les Mélèzes",
+      "type": "tmb",
+      "refuge_url": "https://www.montourdumontblanc.com/en/refuges/gite-les-melezes",
+      "date_from": "2027-06-01",
+      "date_to": "2027-09-30",
+      "min_spots": 2
+    },
+    {
+      "name": "TMB - Refuge des Mottets",
+      "type": "tmb",
+      "refuge_url": "https://www.montourdumontblanc.com/en/refuges/refuge-des-mottets",
+      "date_from": "2027-06-01",
+      "date_to": "2027-09-30",
+      "min_spots": 2
+    },
+    {
+      "name": "TMB - La Fouly Lodge",
+      "type": "tmb",
+      "refuge_url": "https://www.montourdumontblanc.com/en/refuges/la-fouly-lodge",
+      "date_from": "2027-06-01",
+      "date_to": "2027-09-30",
+      "min_spots": 2
+    },
+    {
+      "name": "TMB - Relais d'Arpette",
+      "type": "tmb",
+      "refuge_url": "https://www.montourdumontblanc.com/en/refuges/relais-d-arpette",
+      "date_from": "2027-06-01",
+      "date_to": "2027-09-30",
+      "min_spots": 2
+    },
+    {
+      "name": "Lac Blanc - calendar",
+      "type": "lacblanc",
+      "date_from": "2026-11-01",
+      "date_to": "2027-12-31",
+      "min_spots": 2,
+      "every_minutes": 15
+    },
+    {
+      "name": "Bonatti - booking form dates",
+      "type": "bonatti_form",
+      "url": "https://www.rifugiobonatti.it/en/book-now/",
+      "every_minutes": 15,
+      "date_from": "2027-06-01",
+      "date_to": "2027-09-30"
+    },
+    {
+      "name": "Bonatti - open/closed + season text",
+      "type": "page_changed",
+      "url": "https://www.rifugiobonatti.it/en/",
+      "region": "(The refuge is (?:open|closed).*?)\\s*Acces at",
+      "every_minutes": 30
+    },
+    {
+      "name": "Col de Balme - booking notice",
+      "type": "page_changed",
+      "url": "https://www.refugeducoldebalme.com/en/contact",
+      "region": "(Booking summer.{0,40}?20\\d\\d)",
+      "every_minutes": 30
+    },
+    {
+      "name": "Rifugio Elisabetta - opening text",
+      "type": "page_changed",
+      "url": "https://www.rifugioelisabetta.com/",
+      "region": "(Siamo aperti.*?)\\s*Prenotazioni",
+      "every_minutes": 60
+    },
+    {
+      "name": "Hotel Bouton d'Or - night of 2027-06-30 (later)",
+      "type": "page_text",
+      "url": "PASTE_REQUEST_URL",
+      "alert_if_present": "REPLACE_ME",
+      "disabled": true
+    },
+    {
+      "name": "Backcountry permits (recreation.gov)",
+      "type": "recgov",
+      "note": "OFF until you edit the dates below and delete the 'disabled' line. The date shown is only an example.",
+      "permit_id": "4675323",
+      "min_spots": 4,
+      "dates": [
+        "2027-07-05"
+      ],
+      "campgrounds": {
+        "4675323057": "3L7 - Middle Lamar",
+        "4675323058": "3L8 - Timothy Creek",
+        "4675323059": "3L9 - Warm Spring Meadow",
+        "4675323075": "3U1 - Willow Creek Stock",
+        "4675323076": "3U2 - Willow Creek",
+        "4675323077": "3U3 - Little Saddle Creek",
+        "4675323078": "3U4 - Cold Creek Junction",
+        "4675323050": "3F1 - Cold Creek",
+        "4675323051": "3F2 - Lemon City"
+      },
+      "disabled": true
+    }
+  ]
+}
