@@ -77,6 +77,7 @@
     },
     {
       "name": "Rifugio Elisabetta - opening text",
+         "disabled": true,
       "type": "page_changed",
       "url": "https://www.rifugioelisabetta.com/",
       "region": "(Siamo aperti.*?)\\s*Prenotazioni",
