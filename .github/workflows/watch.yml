@@ -2,8 +2,8 @@ name: booking-watch
 
 on:
   schedule:
-    # Every ~10 minutes. Odd minutes on purpose: GitHub's servers are busiest on :00 and :30.
-    - cron: "7,17,27,37,47,57 * * * *"
+    # Every 5 minutes (GitHub's minimum), offset to avoid :00 and :30 when GitHub is busiest.
+    - cron: "3-59/5 * * * *"
   workflow_dispatch:           # adds a "Run workflow" button so you can test by hand
     inputs:
       flags:
