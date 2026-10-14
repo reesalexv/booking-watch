@@ -39,7 +39,11 @@ HEADERS = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleW
 
 MONTHS_FR = {"Janvier": 1, "Février": 2, "Mars": 3, "Avril": 4, "Mai": 5, "Juin": 6,
              "Juillet": 7, "Août": 8, "Septembre": 9, "Octobre": 10, "Novembre": 11, "Décembre": 12}
-MONTH_HDR = re.compile(r"(%s) (\d{4}) (?:[A-Z] ){6}[A-Z]\b" % "|".join(MONTHS_FR))
+MONTHS_EN = {"January": 1, "February": 2, "March": 3, "April": 4, "May": 5, "June": 6,
+             "July": 7, "August": 8, "September": 9, "October": 10, "November": 11, "December": 12}
+MONTHS_ALL = {**MONTHS_FR, **MONTHS_EN}   # the /en/ pages use English month names, /fr/ pages French
+# 'October 2026 M T W T F S S' (EN) or 'Octobre 2026 L M M J V S D' (FR); weekday letters are optional
+MONTH_HDR = re.compile(r"\b(%s) (\d{4})\b(?: (?:[A-Z] ){6}[A-Z]\b)?" % "|".join(MONTHS_ALL))
 
 
 # ---------------------------------------------------------------- fetching
@@ -89,7 +93,7 @@ def parse_calendar(block):
     result = {}
     for i, h in enumerate(headers):
         seg = block[h.end(): headers[i + 1].start() if i + 1 < len(headers) else len(block)]
-        year, month = int(h.group(2)), MONTHS_FR[h.group(1)]
+        year, month = int(h.group(2)), MONTHS_ALL[h.group(1)]
         pos = 0
         for day in range(1, calendar.monthrange(year, month)[1] + 1):
             cell = re.compile(rf"\s*([–—-]|\d+)\s+{day}(?!\d)").match(seg, pos)
@@ -694,3 +698,4 @@ if __name__ == "__main__":
 #   <key>StandardOutPath</key><string>/Users/YOU/bookingwatch/watch.log</string>
 #   <key>StandardErrorPath</key><string>/Users/YOU/bookingwatch/watch.err</string>
 # </dict></plist>
+
