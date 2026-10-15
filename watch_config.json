@@ -19,7 +19,8 @@
       "refuge_url": "https://www.montourdumontblanc.com/en/refuges/gite-les-melezes",
       "date_from": "2027-06-01",
       "date_to": "2027-09-30",
-      "min_spots": 2
+      "min_spots": 2,
+      "disabled": true
     },
     {
       "name": "TMB - Refuge des Mottets",
@@ -27,7 +28,8 @@
       "refuge_url": "https://www.montourdumontblanc.com/en/refuges/refuge-des-mottets",
       "date_from": "2027-06-01",
       "date_to": "2027-09-30",
-      "min_spots": 2
+      "min_spots": 2,
+      "disabled": true
     },
     {
       "name": "TMB - La Fouly Lodge",
@@ -35,7 +37,8 @@
       "refuge_url": "https://www.montourdumontblanc.com/en/refuges/la-fouly-lodge",
       "date_from": "2027-06-01",
       "date_to": "2027-09-30",
-      "min_spots": 2
+      "min_spots": 2,
+      "disabled": true
     },
     {
       "name": "TMB - Relais d'Arpette",
@@ -43,7 +46,8 @@
       "refuge_url": "https://www.montourdumontblanc.com/en/refuges/relais-d-arpette",
       "date_from": "2027-06-01",
       "date_to": "2027-09-30",
-      "min_spots": 2
+      "min_spots": 2,
+      "disabled": true
     },
     {
       "name": "Lac Blanc - calendar",
@@ -59,14 +63,16 @@
       "url": "https://www.rifugiobonatti.it/en/book-now/",
       "every_minutes": 15,
       "date_from": "2027-06-01",
-      "date_to": "2027-09-30"
+      "date_to": "2027-09-30",
+      "disabled": true
     },
     {
       "name": "Bonatti - open/closed + season text",
       "type": "page_changed",
       "url": "https://www.rifugiobonatti.it/en/",
       "region": "(The refuge is (?:open|closed).*?)\\s*Acces at",
-      "every_minutes": 30
+      "every_minutes": 30,
+      "disabled": true
     },
     {
       "name": "Col de Balme - booking notice",
@@ -77,11 +83,11 @@
     },
     {
       "name": "Rifugio Elisabetta - opening text",
-         "disabled": true,
       "type": "page_changed",
       "url": "https://www.rifugioelisabetta.com/",
       "region": "(Siamo aperti.*?)\\s*Prenotazioni",
-      "every_minutes": 30
+      "every_minutes": 30,
+      "disabled": true
     },
     {
       "name": "Hotel Bouton d'Or - night of 2027-06-30 (later)",
